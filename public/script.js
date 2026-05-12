@@ -620,8 +620,14 @@ function initMobileMenu() {
   /* --- Reset Filters --- */
   function resetFilters() {
     searchInput.value = '';
-    var sortEl = document.getElementById('sort-order');
-    if (sortEl) sortEl.value = 'asc';
+    var sortBtn = document.getElementById('sort-order-btn');
+    if (sortBtn) {
+      sortBtn.dataset.order = 'asc';
+      sortBtn.setAttribute('aria-label', 'Ordina per numero campione: crescente');
+      sortBtn.title = 'Ordina: crescente';
+      var t = sortBtn.querySelector('.sort-order-text');
+      if (t) t.textContent = 'Crescente';
+    }
     selectedContinenti.clear();
     selectedPaesi.clear();
     selectedTipologie.clear();
