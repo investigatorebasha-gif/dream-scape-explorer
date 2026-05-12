@@ -2007,6 +2007,25 @@ h1 em, h2 em, h3 em {
     display: flex;
   }
 
+  /* Compact metadata cards on mobile */
+  .metadata-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+  .metadata-item,
+  .metadata-item--colored {
+    padding: 0.55rem 0.65rem;
+    border-radius: 10px;
+  }
+  .metadata-label {
+    font-size: 0.58rem;
+    margin-bottom: 0.15rem;
+  }
+  .metadata-value {
+    font-size: 0.78rem;
+    line-height: 1.25;
+  }
+
   /* 5. MAP */
   .map-container {
     width: 100%;
