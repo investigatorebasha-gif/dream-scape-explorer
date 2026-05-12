@@ -620,6 +620,8 @@ function initMobileMenu() {
   /* --- Reset Filters --- */
   function resetFilters() {
     searchInput.value = '';
+    var sortEl = document.getElementById('sort-order');
+    if (sortEl) sortEl.value = 'asc';
     selectedContinenti.clear();
     selectedPaesi.clear();
     selectedTipologie.clear();
@@ -629,6 +631,7 @@ function initMobileMenu() {
     renderMsOptions(msTipologia, tipologie);
     updatePaesiDropdown();
     filteredCampioni = [...campioni];
+    applySortOrder();
     visibleCount = PAGE_SIZE;
     renderFilterBadges();
     renderGallery();
