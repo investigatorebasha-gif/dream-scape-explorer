@@ -604,8 +604,8 @@ function initMobileMenu() {
   }
 
   function applySortOrder() {
-    var sortEl = document.getElementById('sort-order');
-    var dir = sortEl ? sortEl.value : 'asc';
+    var sortBtn = document.getElementById('sort-order-btn');
+    var dir = sortBtn ? (sortBtn.dataset.order || 'asc') : 'asc';
     filteredCampioni.sort(function(a, b) {
       var na = parseInt(a.id, 10); var nb = parseInt(b.id, 10);
       if (isNaN(na) || isNaN(nb)) {
@@ -620,8 +620,14 @@ function initMobileMenu() {
   /* --- Reset Filters --- */
   function resetFilters() {
     searchInput.value = '';
-    var sortEl = document.getElementById('sort-order');
-    if (sortEl) sortEl.value = 'asc';
+    var sortBtn = document.getElementById('sort-order-btn');
+    if (sortBtn) {
+      sortBtn.dataset.order = 'asc';
+      sortBtn.setAttribute('aria-label', 'Ordina per numero campione: crescente');
+      sortBtn.title = 'Ordina: crescente';
+      var t = sortBtn.querySelector('.sort-order-text');
+      if (t) t.textContent = 'Crescente';
+    }
     selectedContinenti.clear();
     selectedPaesi.clear();
     selectedTipologie.clear();
@@ -755,8 +761,19 @@ function initMobileMenu() {
 
   /* --- Event Listeners --- */
   searchInput.addEventListener('input', applyFilters);
-  var sortOrderEl = document.getElementById('sort-order');
-  if (sortOrderEl) sortOrderEl.addEventListener('change', applyFilters);
+  var sortOrderBtn = document.getElementById('sort-order-btn');
+  if (sortOrderBtn) {
+    sortOrderBtn.addEventListener('click', function() {
+      var next = sortOrderBtn.dataset.order === 'asc' ? 'desc' : 'asc';
+      sortOrderBtn.dataset.order = next;
+      var label = next === 'asc' ? 'Crescente' : 'Decrescente';
+      sortOrderBtn.setAttribute('aria-label', 'Ordina per numero campione: ' + label.toLowerCase());
+      sortOrderBtn.title = 'Ordina: ' + label.toLowerCase();
+      var t = sortOrderBtn.querySelector('.sort-order-text');
+      if (t) t.textContent = label;
+      applyFilters();
+    });
+  }
   bindPress(btnReset, resetFilters);
 
   /* --- Init --- */

@@ -817,7 +817,33 @@ h1 em, h2 em, h3 em {
   align-items: flex-end;
 }
 
-/* View toggle */
+/* Sort order toggle button (under search input) */
+.sort-order-btn {
+  margin-top: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  background: var(--color-bg);
+  border: 1.5px solid #e0d5c5;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+  width: fit-content;
+}
+.sort-order-btn:hover {
+  color: var(--color-terracotta);
+  border-color: var(--color-terracotta);
+}
+.sort-order-btn .sort-order-icon {
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+.sort-order-btn[data-order="desc"] .sort-order-icon {
+  transform: rotate(180deg);
+}
 .view-toggle {
   display: flex;
   gap: 2px;
@@ -2886,6 +2912,10 @@ html.theme-anim .theme-toggle {
         <div class="filter-group">
           <label for="search-input">Cerca</label>
           <input type="text" id="search-input" placeholder="Nome, luogo, paese, n° campione..." autocomplete="off">
+          <button type="button" id="sort-order-btn" class="sort-order-btn" data-order="asc" aria-label="Ordina per numero campione: crescente" title="Ordina: crescente">
+            <svg class="sort-order-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
+            <span class="sort-order-text">Crescente</span>
+          </button>
         </div>
         <div class="filter-group">
           <label for="filter-continente">Continente</label>
@@ -2916,13 +2946,6 @@ html.theme-anim .theme-toggle {
             </button>
             <div class="multi-select-panel" id="filter-tipologia-panel" role="listbox" aria-multiselectable="true" hidden></div>
           </div>
-        </div>
-        <div class="filter-group">
-          <label for="sort-order">Ordina</label>
-          <select id="sort-order">
-            <option value="asc">N° campione: crescente</option>
-            <option value="desc">N° campione: decrescente</option>
-          </select>
         </div>
         <div class="filters-actions">
           <button class="btn btn-secondary" id="btn-reset" type="button">✕ Reset</button>
