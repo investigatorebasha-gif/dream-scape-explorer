@@ -489,9 +489,6 @@ function initMobileMenuDetail() {
     });
   }
 
-  function generateQR(id) {
-    var qrContainer = document.getElementById('qr-code');
-    if (!qrContainer) return;
   function generateQR(id, containerId, size) {
     var elId = containerId || 'qr-code';
     var qrSize = size || 180;
