@@ -402,6 +402,20 @@ function initMobileMenuDetail() {
     '</div>';
   }
 
+  function isQrCodeAsset(src) {
+    var value = (src || '').toString().toLowerCase().replace(/\\/g, '/').trim();
+    if (!value) return false;
+    if (/(^|\/)qr\//.test(value) || /qr-?code|qrcode/.test(value)) return true;
+    var match = value.match(/^images\/microscopio\/(\d+)\.png$/);
+    if (!match) return false;
+    var number = parseInt(match[1], 10);
+    return number >= 1 && number <= 52;
+  }
+
+  function isUsableImage(src) {
+    return !!src && src !== 'images/coming-soon.jpg' && !isQrCodeAsset(src);
+  }
+
   function renderDetail(c, allCampioni) {
     var related = allCampioni
       .filter(function(s){return s.continente === c.continente && s.id !== c.id})
@@ -416,19 +430,19 @@ function initMobileMenuDetail() {
 
     var imagesHtml = imageBlock(c.immagine, 'Campione di sabbia: ' + c.nome, '📷 Immagine del campione');
     var microscopeImages = [];
-    if (c.microscopio && c.microscopio !== 'images/coming-soon.jpg' && c.microscopio !== c.immagine) {
+    if (isUsableImage(c.microscopio) && c.microscopio !== c.immagine) {
       microscopeImages.push({ src: c.microscopio, label: '🔬 Immagine al microscopio' });
     }
     if (Array.isArray(c.immagini_extra)) {
       c.immagini_extra.forEach(function(img) {
-        if (img && img.src && !microscopeImages.some(function(existing) { return existing.src === img.src; })) {
+        if (img && isUsableImage(img.src) && !microscopeImages.some(function(existing) { return existing.src === img.src; })) {
           microscopeImages.push({ src: img.src, label: img.label || '🔬 Immagine al microscopio' });
         }
       });
     }
     if (Array.isArray(c.microscopio_extra)) {
       c.microscopio_extra.forEach(function(src) {
-        if (src && !microscopeImages.some(function(existing) { return existing.src === src; })) {
+        if (isUsableImage(src) && !microscopeImages.some(function(existing) { return existing.src === src; })) {
           microscopeImages.push({ src: src, label: '🔬 Immagine al microscopio' });
         }
       });
@@ -436,7 +450,7 @@ function initMobileMenuDetail() {
     imagesHtml += microscopeImages.map(function(img) {
       return imageBlock(img.src, img.label + ': ' + c.nome, img.label);
     }).join('');
-    var qrImage = microscopeImages[0] || { src: c.immagine, label: '📷 Immagine del campione' };
+    var qrImage = microscopeImages[0] || { src: isUsableImage(c.immagine) ? c.immagine : 'images/coming-soon.jpg', label: '📷 Immagine del campione' };
     var qrImageNote = microscopeImages.length > 0
       ? 'Scansiona per aprire l&#39;immagine al microscopio'
       : 'Scansiona per aprire l&#39;immagine del campione';

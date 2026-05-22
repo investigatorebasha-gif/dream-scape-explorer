@@ -2669,6 +2669,118 @@ html[data-theme="dark"] .multi-select-panel {
   color: var(--color-text);
   border-color: var(--color-border);
 }
+
+html[data-theme="dark"] .detail-description,
+html[data-theme="dark"] .detail-metadata,
+html[data-theme="dark"] .detail-qr,
+html[data-theme="dark"] .detail-image-block {
+  background: linear-gradient(135deg, #2B2118 0%, #1F160F 100%);
+  color: #F7E8D0;
+  border-color: rgba(255, 178, 74, 0.22);
+  box-shadow:
+    0 18px 44px rgba(0, 0, 0, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+html[data-theme="dark"] .detail-description h2,
+html[data-theme="dark"] .detail-metadata h2,
+html[data-theme="dark"] .detail-qr h2,
+html[data-theme="dark"] .related-section h2 {
+  color: #FFF2DC;
+}
+
+html[data-theme="dark"] .detail-description p,
+html[data-theme="dark"] .detail-header-location,
+html[data-theme="dark"] .qr-note {
+  color: #E7D2B3;
+}
+
+html[data-theme="dark"] .metadata-item--colored {
+  background: linear-gradient(135deg, #342719 0%, #261B12 100%) !important;
+  border-color: rgba(255, 178, 74, 0.28) !important;
+  color: #FFF4E3 !important;
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.28),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+}
+
+html[data-theme="dark"] .metadata-item--colored:hover {
+  box-shadow:
+    0 14px 32px rgba(0, 0, 0, 0.34),
+    0 0 24px rgba(255, 178, 74, 0.12);
+}
+
+html[data-theme="dark"] .metadata-item--colored .metadata-label {
+  color: #FFC46B !important;
+}
+
+html[data-theme="dark"] .metadata-item--colored .metadata-value {
+  color: #FFF6EA !important;
+}
+
+html[data-theme="dark"] .metadata-item--has-bg {
+  background: #21170F !important;
+}
+
+html[data-theme="dark"] .metadata-item__bg {
+  filter: saturate(0.98) brightness(0.62) contrast(1.12);
+  opacity: 0.9;
+}
+
+html[data-theme="dark"] .metadata-item__overlay,
+html[data-theme="dark"] .metadata-item--paese .metadata-item__overlay,
+html[data-theme="dark"] .metadata-item--bacino .metadata-item__overlay,
+html[data-theme="dark"] .metadata-item--continente .metadata-item__overlay {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(19, 12, 7, 0.88) 0%,
+      rgba(19, 12, 7, 0.58) 55%,
+      rgba(19, 12, 7, 0.34) 100%
+    );
+}
+
+html[data-theme="dark"] .metadata-item--has-bg .metadata-label,
+html[data-theme="dark"] .metadata-item--has-bg .metadata-value {
+  color: #FFF6EA !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.58);
+}
+
+html[data-theme="dark"] .detail-image-label,
+html[data-theme="dark"] .image-qr {
+  background: #241A12;
+  color: #E8D3B6;
+  border-color: rgba(255, 178, 74, 0.18);
+}
+
+html[data-theme="dark"] .qr-container,
+html[data-theme="dark"] .image-qr-container {
+  background: #FFFFFF;
+  border: 1px solid #D8C6B0;
+  border-radius: var(--radius-sm);
+}
+
+html[data-theme="dark"] .site-footer {
+  background: linear-gradient(180deg, #16100A 0%, #0F0A06 100%);
+  color: #F4E6D2;
+  border-top: 1px solid rgba(255, 178, 74, 0.18);
+}
+
+html[data-theme="dark"] .footer-title {
+  color: #FFF2DC;
+}
+
+html[data-theme="dark"] .footer-school,
+html[data-theme="dark"] .footer-links a {
+  color: #D8C4A8;
+  opacity: 1;
+}
+
+html[data-theme="dark"] .footer-copy {
+  color: #AFA08D;
+  opacity: 1;
+  border-top-color: rgba(255, 255, 255, 0.12);
+}
 /* Smooth color transitions when switching theme */
 html.theme-anim,
 html.theme-anim body,
