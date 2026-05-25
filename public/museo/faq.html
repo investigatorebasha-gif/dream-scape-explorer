@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ - Museo Digitale delle Sabbie</title>
+  <meta name="description" content="Domande frequenti sul Museo Digitale delle Sabbie del Mondo.">
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #F7F1E8;
+  --surface: #FFF9F2;
+  --surface-soft: #FBF6EF;
+  --text: #2E2218;
+  --muted: #6E6257;
+  --line: #E8DAC4;
+  --accent: #C86D42;
+  --accent-dark: #B65D34;
+  --footer: #2E2218;
+  --footer-text: rgba(255, 255, 255, 0.78);
+  --shadow: 0 18px 44px rgba(70, 45, 22, 0.10);
+  --radius: 10px;
+}
+
+html[data-theme="dark"] {
+  --bg: #1A130D;
+  --surface: #2A2018;
+  --surface-soft: #241A12;
+  --text: #FFF2DC;
+  --muted: #E7D2B3;
+  --line: rgba(255, 178, 74, 0.22);
+  --accent: #FFB24A;
+  --accent-dark: #FFC46B;
+  --footer: #0F0A06;
+  --footer-text: #F4E6D2;
+  --shadow: 0 18px 44px rgba(0, 0, 0, 0.38);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+}
+a { color: inherit; text-decoration: none; }
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+  max-width: 1180px;
+  min-height: 68px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.logo img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 1.35rem;
+  flex-wrap: wrap;
+}
+
+.nav a {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.nav a:hover,
+.nav a.active { color: var(--accent); }
+
+.page-hero {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 5rem 2rem 2.25rem;
+}
+
+.eyebrow {
+  display: block;
+  color: var(--accent);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 0.9rem;
+}
+
+h1, h2, h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  line-height: 1.1;
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  max-width: 840px;
+}
+
+.page-hero p {
+  max-width: 740px;
+  color: var(--muted);
+  font-size: 1.05rem;
+  margin: 1rem 0 0;
+}
+
+.faq-main {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 2rem 5rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.faq-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.faq-item,
+.side-panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.faq-item {
+  padding: 1.35rem 1.45rem;
+}
+
+.faq-item h2 {
+  font-size: 1.45rem;
+  margin-bottom: 0.55rem;
+}
+
+.faq-item p {
+  color: var(--muted);
+  margin: 0;
+}
+
+.side-panel {
+  position: sticky;
+  top: 92px;
+  padding: 1.5rem;
+}
+
+.side-panel h2 {
+  font-size: 1.65rem;
+  margin-bottom: 0.65rem;
+}
+
+.side-panel p {
+  color: var(--muted);
+  margin: 0 0 1rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.78rem 1.15rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #FFF8EF;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+html[data-theme="dark"] .btn { color: #20140B; }
+.btn:hover { background: var(--accent-dark); }
+
+.site-footer {
+  background: var(--footer);
+  color: var(--footer-text);
+  text-align: center;
+  padding: 3rem 1.5rem;
+}
+
+.site-footer p { margin: 0.25rem 0; }
+
+@media (max-width: 820px) {
+  .header-inner { align-items: flex-start; flex-direction: column; padding: 1rem 1.25rem; }
+  .nav { margin-left: 0; gap: 1rem; }
+  .page-hero { padding: 3rem 1.25rem 1.75rem; }
+  .faq-main { grid-template-columns: 1fr; padding: 0 1.25rem 3.5rem; }
+  .side-panel { position: static; }
+}
+  </style>
+  <script>
+    (function(){
+      try {
+        var mode = localStorage.getItem('museo-theme-mode') || 'auto';
+        if (!['auto', 'light', 'dark'].includes(mode)) mode = 'auto';
+        var resolved = mode === 'auto'
+          ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+          : mode;
+        document.documentElement.setAttribute('data-theme-mode', mode);
+        document.documentElement.setAttribute('data-theme', resolved);
+      } catch(e) {}
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="index.html">
+        <img src="../images/logo-scuola.png" alt="Logo ITCS Maria Lazzari">
+        <span>Museo delle Sabbie</span>
+      </a>
+      <nav class="nav" aria-label="Navigazione principale">
+        <a href="index.html#mappa">Mappa</a>
+        <a href="index.html#collezione">Collezione</a>
+        <a href="index.html#info">Informazioni</a>
+        <a class="active" href="faq.html">FAQ</a>
+        <a href="contatto-prof.html">Contatto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <span class="eyebrow">FAQ</span>
+      <h1>Domande frequenti</h1>
+      <p>Risposte rapide per usare il museo digitale, consultare i campioni e capire come funzionano immagini e QR code.</p>
+    </section>
+
+    <section class="faq-main" aria-label="Domande frequenti">
+      <div class="faq-list">
+        <article class="faq-item">
+          <h2>Come posso cercare un campione?</h2>
+          <p>Vai alla collezione e usa la barra di ricerca o i filtri per continente, paese e tipologia. Puoi anche ordinare i risultati per numero di campione.</p>
+        </article>
+        <article class="faq-item">
+          <h2>A cosa servono i QR code?</h2>
+          <p>Un QR apre la scheda tecnica del campione. L'altro apre direttamente l'immagine disponibile del campione o del microscopio.</p>
+        </article>
+        <article class="faq-item">
+          <h2>Perche alcune immagini non sono disponibili?</h2>
+          <p>Alcuni campioni sono gia catalogati ma non hanno ancora una foto pubblicata. In quel caso il sito mostra un'immagine provvisoria.</p>
+        </article>
+        <article class="faq-item">
+          <h2>Come posso mandare correzioni o consigli?</h2>
+          <p>Apri la pagina contatto e scrivi alla professoressa Marchiori indicando la domanda, il consiglio o il numero del campione da controllare.</p>
+        </article>
+        <article class="faq-item">
+          <h2>Il sito funziona anche da telefono?</h2>
+          <p>Si. La galleria, la mappa, i QR code e le schede dei campioni sono pensati per essere consultati anche da smartphone.</p>
+        </article>
+      </div>
+
+      <aside class="side-panel" aria-label="Contatto professoressa">
+        <h2>Hai una domanda?</h2>
+        <p>Apri la pagina dedicata per scrivere direttamente alla professoressa Marchiori.</p>
+        <a class="btn" href="contatto-prof.html">Scrivi alla prof</a>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>Museo Digitale delle Sabbie del Mondo</strong></p>
+    <p>ITCS "Maria Lazzari" - Progetto didattico</p>
+  </footer>
+</body>
+</html>

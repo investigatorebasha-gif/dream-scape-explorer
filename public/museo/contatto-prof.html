@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scrivi alla prof - Museo Digitale delle Sabbie</title>
+  <meta name="description" content="Pagina per contattare la professoressa Marchiori per domande, consigli e correzioni sul Museo Digitale delle Sabbie.">
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #F7F1E8;
+  --surface: #FFF9F2;
+  --surface-soft: #FBF6EF;
+  --text: #2E2218;
+  --muted: #6E6257;
+  --line: #E8DAC4;
+  --accent: #C86D42;
+  --accent-dark: #B65D34;
+  --footer: #2E2218;
+  --footer-text: rgba(255, 255, 255, 0.78);
+  --shadow: 0 18px 44px rgba(70, 45, 22, 0.10);
+  --radius: 10px;
+}
+
+html[data-theme="dark"] {
+  --bg: #1A130D;
+  --surface: #2A2018;
+  --surface-soft: #241A12;
+  --text: #FFF2DC;
+  --muted: #E7D2B3;
+  --line: rgba(255, 178, 74, 0.22);
+  --accent: #FFB24A;
+  --accent-dark: #FFC46B;
+  --footer: #0F0A06;
+  --footer-text: #F4E6D2;
+  --shadow: 0 18px 44px rgba(0, 0, 0, 0.38);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+}
+a { color: inherit; text-decoration: none; }
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+  max-width: 1180px;
+  min-height: 68px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+}
+
+.logo img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 1.35rem;
+  flex-wrap: wrap;
+}
+
+.nav a {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.nav a:hover,
+.nav a.active { color: var(--accent); }
+
+.contact-page {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.contact-hero,
+.contact-card,
+.message-guide {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.contact-hero {
+  padding: 2.4rem;
+}
+
+.eyebrow {
+  display: block;
+  color: var(--accent);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 0.9rem;
+}
+
+h1, h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  line-height: 1.1;
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 7vw, 5rem);
+}
+
+.contact-hero p,
+.contact-card p,
+.message-guide li {
+  color: var(--muted);
+}
+
+.contact-hero p {
+  max-width: 720px;
+  font-size: 1.05rem;
+  margin: 1rem 0 0;
+}
+
+.message-guide {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+}
+
+.message-guide h2,
+.contact-card h2 {
+  font-size: 1.65rem;
+  margin-bottom: 0.8rem;
+}
+
+.message-guide ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.message-guide li + li {
+  margin-top: 0.45rem;
+}
+
+.contact-card {
+  padding: 1.5rem;
+  position: sticky;
+  top: 92px;
+}
+
+.email-link {
+  display: block;
+  margin: 1rem 0 1.25rem;
+  color: var(--accent);
+  font-weight: 800;
+  word-break: break-word;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 48px;
+  padding: 0.85rem 1.15rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #FFF8EF;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+html[data-theme="dark"] .btn { color: #20140B; }
+.btn:hover { background: var(--accent-dark); }
+
+.secondary-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.site-footer {
+  background: var(--footer);
+  color: var(--footer-text);
+  text-align: center;
+  padding: 3rem 1.5rem;
+}
+
+.site-footer p { margin: 0.25rem 0; }
+
+@media (max-width: 820px) {
+  .header-inner { align-items: flex-start; flex-direction: column; padding: 1rem 1.25rem; }
+  .nav { margin-left: 0; gap: 1rem; }
+  .contact-page { grid-template-columns: 1fr; padding: 3rem 1.25rem 4rem; }
+  .contact-hero { padding: 1.5rem; }
+  .contact-card { position: static; }
+}
+  </style>
+  <script>
+    (function(){
+      try {
+        var mode = localStorage.getItem('museo-theme-mode') || 'auto';
+        if (!['auto', 'light', 'dark'].includes(mode)) mode = 'auto';
+        var resolved = mode === 'auto'
+          ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+          : mode;
+        document.documentElement.setAttribute('data-theme-mode', mode);
+        document.documentElement.setAttribute('data-theme', resolved);
+      } catch(e) {}
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="index.html">
+        <img src="../images/logo-scuola.png" alt="Logo ITCS Maria Lazzari">
+        <span>Museo delle Sabbie</span>
+      </a>
+      <nav class="nav" aria-label="Navigazione principale">
+        <a href="index.html#mappa">Mappa</a>
+        <a href="index.html#collezione">Collezione</a>
+        <a href="index.html#info">Informazioni</a>
+        <a href="faq.html">FAQ</a>
+        <a class="active" href="contatto-prof.html">Contatto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="contact-page">
+    <section>
+      <div class="contact-hero">
+        <span class="eyebrow">Contatto</span>
+        <h1>Chiedi alla prof</h1>
+        <p>Usa questa pagina per inviare domande, consigli, correzioni o segnalazioni sul Museo Digitale delle Sabbie del Mondo.</p>
+      </div>
+
+      <div class="message-guide">
+        <h2>Cosa scrivere nel messaggio</h2>
+        <ul>
+          <li>Il tuo nome e la classe, se serve.</li>
+          <li>Il numero del campione, se la domanda riguarda una scheda precisa.</li>
+          <li>La domanda, il consiglio o la correzione da controllare.</li>
+          <li>Eventuali immagini o informazioni utili da aggiungere.</li>
+        </ul>
+      </div>
+    </section>
+
+    <aside class="contact-card" aria-label="Email professoressa">
+      <span class="eyebrow">Email</span>
+      <h2>Prof.ssa Marchiori</h2>
+      <p>Il pulsante apre il programma email del dispositivo con destinatario e oggetto gia compilati.</p>
+      <a class="email-link" href="mailto:v_marchiori@itcslazzari.eu">v_marchiori@itcslazzari.eu</a>
+      <a class="btn" href="mailto:v_marchiori@itcslazzari.eu?subject=Domanda%20sul%20Museo%20Digitale%20delle%20Sabbie&body=Buongiorno%20prof.ssa%20Marchiori,%0D%0A%0D%0A">Apri email</a>
+      <a class="secondary-link" href="faq.html">Vai alle FAQ</a>
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>Museo Digitale delle Sabbie del Mondo</strong></p>
+    <p>ITCS "Maria Lazzari" - Progetto didattico</p>
+  </footer>
+</body>
+</html>
