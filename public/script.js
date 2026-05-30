@@ -206,7 +206,7 @@ function initMobileMenu() {
   if (overlay) bindPress(overlay, closeMenu);
 
   nav.querySelectorAll("a").forEach(function (link) {
-    bindPress(link, closeMenu);
+    link.addEventListener("click", closeMenu);
   });
 
   document.addEventListener("keydown", function (e) {
